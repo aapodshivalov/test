@@ -1,10 +1,14 @@
-// alert("111");
-
 
 var xhr = new XMLHttpRequest();
 
 xhr.open('GET', 'https://api.randomuser.me/1.0/?results=50&nat=gb,us&inc=gender,name,location,email,phone,picture', false);
 
+function ucFirst(str) {
+  // только пустая строка в логическом контексте даст false
+  if (!str) return str;
+
+  return str[0].toUpperCase() + str.slice(1);
+}
 
 // var text;
 // var users = 0;
@@ -57,24 +61,24 @@ var reply_click = function()
 
 
 	var name = document.createElement("P");
-	var nameText = document.createTextNode('Name: ' + users.results[ID].name.title+' '+users.results[ID].name.first+' '+users.results[ID].name.last);
+	var nameText = document.createTextNode('Name: ' + ucFirst(users.results[ID].name.title)+'. '+ucFirst(users.results[ID].name.first)+' '+ucFirst(users.results[ID].name.last));
 	name.appendChild(nameText);
 	document.getElementById("X").appendChild(name); 
 
 
 	var street = document.createElement("P");
-	var streetText = document.createTextNode("Street: " + users.results[ID].location.street + '');
+	var streetText = document.createTextNode("Street: " + ucFirst((users.results[ID].location.street).split()) + '');
 	street.appendChild(streetText);
 	document.getElementById("X").appendChild(street); 
 
 	var city = document.createElement("P");
-	var cityText = document.createTextNode("City: " + users.results[ID].location.city + '');
+	var cityText = document.createTextNode("City: " + ucFirst(users.results[ID].location.city) + '');
 	city.appendChild(cityText);
 	document.getElementById("X").appendChild(city); 
 
 
 	var state = document.createElement("P");
-	var stateText = document.createTextNode("State: " + users.results[ID].location.state + '');
+	var stateText = document.createTextNode("State: " + ucFirst(users.results[ID].location.state) + '');
 	state.appendChild(stateText);
 	document.getElementById("X").appendChild(state); 
 
@@ -117,7 +121,7 @@ window.onclick = function(event) {
 
 
 	var name = document.createElement("P");
-	var nameText = document.createTextNode(users.results[i].name.title+' '+users.results[i].name.first+' '+users.results[i].name.last);
+	var nameText = document.createTextNode(ucFirst(users.results[i].name.title)+'. '+ucFirst(users.results[i].name.first)+' '+ucFirst(users.results[i].name.last));
 	name.appendChild(nameText);
 	document.getElementById("list").appendChild(name);    
 
