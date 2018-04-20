@@ -9,6 +9,15 @@
 
 </head>
 <body>
+<h1 id="err"></h1>
+<div id="123"> сортировать 
+	<select onchange="{if(this.options[this.selectedIndex].onclick != null){this.options[this.selectedIndex].onclick(this);}}">
+		<option>--</option>
+		<option id='aaa' onclick="sortABC();" value="A">по алфавиту</option>
+		<option id='bbb' onclick="reverseABC();" value="B">в обратном порядке</option>
+	</select>
+</div>
+<br>
 <div id="list"></div>
 <div id="modal" class="modal">
 
